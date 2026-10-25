@@ -59,6 +59,7 @@ La guía arquitectónica es portable; los comandos, convenciones y reglas de an�
 - **Estructura:** `quick_validate.py` pasó con Python 3.11 y PyYAML 6.0.3 en la validación anterior.
 - **Escenarios manuales:** A–F pasaron una autoevaluación manual frente a sus resultados esperados. No sustituye una evaluación independiente con varios modelos o plataformas.
 - **Evaluación de campo con Cursor:** dos ejecuciones sobre una aplicación TypeScript/MongoDB mejoraron los conteos, estados y clasificación de mejoras opcionales. El segundo informe aún presentó ambiguamente `bulkWrite` de MongoDB como alternativa a un reemplazo atómico multi-documento. Por ello, el escenario G **pasa parcialmente**; consulta los [criterios de evaluación](references/skill-evaluation.md).
+- **Informe de otro proyecto:** una auditoría TypeScript/Express/Sequelize mantuvo conteos ejecutivos coherentes y trazas útiles de dominio y casos de uso. Reveló puntos de calibración sobre normalización no requerida, hallazgos solapados y severidad de módulos no cableados. El escenario H ahora cubre estos casos; aún no se ha vuelto a ejecutar en un harness. El informe compartido no identificó plataforma ni modelo, así que no se cuenta como prueba específica de plataforma.
 
 ## Versionado
 

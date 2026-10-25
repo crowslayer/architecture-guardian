@@ -59,6 +59,7 @@ Architecture guidance is portable; commands, conventions, and static-analysis ru
 - **Structure:** `quick_validate.py` passed with Python 3.11 and PyYAML 6.0.3 in the prior validation run.
 - **Manual fixtures:** A–F passed a manual self-evaluation against their expected outcomes. This is not an independent multi-model/platform evaluation.
 - **Cursor field evaluation:** two runs on one TypeScript/MongoDB application improved finding counts, statuses, and optional-improvement classification. The second report still ambiguously offered MongoDB `bulkWrite` as an alternative to an atomic multi-document replacement. Fixture G therefore **partially passes**; see [the evaluation criteria](references/skill-evaluation.md).
+- **Additional project report:** a TypeScript/Express/Sequelize audit had consistent executive counts and useful domain/use-case traces. It exposed calibration issues around unstated normalization rules, overlapping findings, and severity for an unwired module. Regression fixture H now covers these cases; it has not yet been rerun in an agent harness. The pasted report did not identify its platform/model, so it is not counted as a platform-specific test.
 
 ## Versioning
 

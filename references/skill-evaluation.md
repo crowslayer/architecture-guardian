@@ -110,11 +110,39 @@ observations; do not describe bulkWrite as multi-document atomic. Recommend
 a transaction only after checking deployment support, or describe a recovery/
 staging design with its actual atomic switch and failure semantics.
 
+### H. Missing business contract, overlapping findings, and latent exposure
+
+```text
+A TypeScript application has an AdscriptionName constructor that calls
+value.trim().toUpperCase() but discards the result. Existing tests expect the
+original casing, and no product requirement says names must be normalized.
+An ActiveAdscriptionsFinder calls an unfiltered findAll; a general list also
+returns inactive rows, while its read model omits isActive. The module's HTTP
+routes and DI registration are commented out. A use case authorizes
+Action.Update before deactivating an aggregate; the project also defines
+Action.Deactivate, but its role-to-action policy is not inspected. Domain
+events are recorded but there are no subscribers or stated consumers.
+```
+
+Expected: identify the active-only query mismatch as a source-confirmed defect
+and explain that its current exposure is latent while the module is unwired.
+Do not call normalization a confirmed business defect without a requirement;
+report the discarded expression as a code fact and classify the desired
+normalization as unresolved or optional. Consolidate overlapping list/read
+model symptoms unless a distinct contract and correction are evidenced.
+Report the authorization action mismatch separately from any claim of
+privilege escalation, which requires policy/role evidence. Treat event
+publication as conditional on consumers or requirements; do not demand a
+broker/outbox by default. Rate severity using current reachability and avoid
+double-counting one root cause.
+
 ## Acceptance criteria
 
 - The stack and scope are stated from evidence, and stack-specific references are loaded only when relevant.
 - At least one critical or representative use case is traced end to end when the task scope supports it.
 - Findings cite evidence and distinguish confirmed behavior, assumptions, and missing evidence.
+- A confirmed defect is tied to an evidenced expected contract; suspicious code alone does not establish product intent.
+- Overlapping symptoms are consolidated or their distinct contracts are explained; severity reflects current reachability as well as conditional future impact.
 - Pattern recommendations connect to a concrete risk or responsibility and mention a simpler alternative.
 - No pattern is required solely because it is named in this skill.
 - Commands are recommendations unless the user authorizes execution; unknown effects are surfaced before running them.

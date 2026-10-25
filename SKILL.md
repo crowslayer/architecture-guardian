@@ -175,6 +175,13 @@ A Factory is not required for every constructor.
 
 Determine whether business rules are explicit, protected, and tested.
 
+Treat suspicious implementation details as evidence of behavior, not proof
+of intended behavior. A discarded normalization result, unused domain event,
+or action enum mismatch establishes a code fact; a confirmed defect also
+needs an expected contract grounded in requirements, API semantics, tests, or
+an established project convention. If tests or requirements conflict, state
+the conflict and classify the impact as potential or optional until resolved.
+
 ### 7. Evaluate architecture and patterns contextually
 
 Consider the simplest design that meets the requirements.
@@ -258,6 +265,11 @@ Do not infer a business rule, an invariant, or a pattern violation from a
 class name, folder, diagram, or lint rule alone. If no defect is confirmed,
 state what was inspected and where evidence was insufficient; do not imply
 that uninspected areas passed.
+Group observations with the same root cause and correction into one finding.
+Keep findings separate only when they affect distinct contracts, boundaries,
+or failure modes. For authorization findings, distinguish a mismatched action
+selector from a demonstrated permission bypass; inspect role/policy mappings
+before claiming which users gain or lose access.
 
 ## Severity
 
@@ -265,6 +277,11 @@ Read references/severity-rubric.md.
 
 Use severity based on actual business, security, reliability,
 or maintainability impact, not the number of patterns involved.
+Inspect whether the affected use case is reachable in the current composition
+root, routing, job, or message wiring. A defect in an unwired or disabled
+module may be confirmed in source while its current impact remains latent;
+state both facts and rate severity for the evidenced present exposure, noting
+conditional impact if the module is activated.
 
 ## Reporting
 

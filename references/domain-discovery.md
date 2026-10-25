@@ -17,6 +17,13 @@ Identify only what the evidence supports:
 
 Separate documented requirements, behavior demonstrated by code/tests, and assumptions. When requirements are absent, do not invent them. State which invariant or business expectation could not be confirmed. Ask only when that uncertainty blocks a safe change; otherwise continue with explicit assumptions and scope limits.
 
+An implementation clue (such as a discarded normalization call, an unused
+domain event, or a distinct authorization action) proves what the code does,
+not necessarily what the product requires. Confirm expected behavior from
+requirements, API contracts, tests, or repeated project conventions. If tests
+and apparent intent disagree, report the discrepancy without silently
+choosing one as the business rule.
+
 DDD is most useful when the system has meaningful business rules, lifecycle, or consistency boundaries. For simple CRUD or infrastructure-focused components, say that DDD constructs are not relevant or not evidenced instead of manufacturing aggregates, repositories, or bounded contexts.
 
 ## Select flows to trace
